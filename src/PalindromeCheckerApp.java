@@ -1,31 +1,33 @@
+import java.util.Stack;
+
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Original input
-        String input = "radar";
+        // Declare and initialize input string
+        String input = "noon";
 
-        // Convert string to character array
-        char[] characters = input.toCharArray();
+        // Create Stack to store characters
+        Stack<Character> stack = new Stack<>();
 
-        // Two-pointer approach
-        int left = 0;
-        int right = characters.length - 1;
+        // Push each character into stack
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
 
+        // Assume palindrome initially
         boolean isPalindrome = true;
 
-        while (left < right) {
+        // Pop from stack and compare
+        for (char c : input.toCharArray()) {
 
-            if (characters[left] != characters[right]) {
+            if (c != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-
-            left++;
-            right--;
         }
 
-        // Display result (same format as your image)
+        // Print result (matching your format)
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
